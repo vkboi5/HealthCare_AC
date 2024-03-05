@@ -1,0 +1,51 @@
+.container {
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .add-button {
+    margin-bottom: 200px;
+  }
+  
+  .employee-card {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .small-button{
+    height: 55px;
+    padding: 5px 10px;
+    width: auto;
+    margin-top: 180px;
+    margin-right: -150px;
+    z-index: 100;
+  }
+  .employee-card h3 {
+    margin-top: 0;
+  }
+  
+  .employee-card p {
+    margin: 5px 0;
+  }
+  
+  .edit-button,
+  .delete-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover {
+    opacity: 0.8;
+  }
+  
