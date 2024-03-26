@@ -1276,8 +1276,8 @@
  import { useNavigate } from 'react-router-dom';
  import DatePicker from 'react-datepicker'; // Import the date picker component
  import 'react-datepicker/dist/react-datepicker.css'; // Import the date picker styles
- import './PatientAppointments.css';
- import Photo from './papoint.png';
+ import './css/PatientAppointments.css';
+ import Photo from './images/papoint.png';
  import Chatbot from "./ChatBot.js";
  //import { TimingsProvider } from './TimingsContext';
  //import FetchTest from './FetchTest';

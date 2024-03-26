@@ -1,8 +1,8 @@
 // Navbar.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navbar.css';
-import logo from './Arogclogo.png'; // make sure the logo path is correct
+import './css/Navbar.css';
+import logo from './images/Arogclogo.png'; // make sure the logo path is correct
 
 const Navbar = () => {
   return (

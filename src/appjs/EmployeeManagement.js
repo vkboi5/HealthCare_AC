@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'; // Import Link from React Router
 import List from './List';
 import Add from './Add';
 import Edit from './Edit';
-import './EmployeeManagement.css';
+import './css/EmployeeManagement.css';
 import { employeesData } from './data/index';
 
 function Dashboard() {

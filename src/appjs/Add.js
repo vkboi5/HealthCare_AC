@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Swal from 'sweetalert2';
-import './Add.css'
+import './css/Add.css'
 
 function Add({ employees, setEmployees, setIsAdding }) {
 

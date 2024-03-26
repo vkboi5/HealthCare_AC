@@ -899,12 +899,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QRCode from 'qrcode.react';
-import './Register.css';
-import doct1 from './Rejs2.png';
-
-
-
-
+import './css/Register.css';
+import doct1 from './images/Rejs2.png';
 
 const Register = () => {
   // State variables to manage form input

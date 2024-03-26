@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Swal from 'sweetalert2';
-import './Edit.css'
+import './css/Edit.css'
 
 function Edit({ employees, selectedEmployee, setEmployees, setIsEditing }) {
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Popup.css';
+import './css/Popup.css';
 
 const Popup = ({ onClose }) => {
   const [prescriptionNames, setPrescriptionNames] = useState('');

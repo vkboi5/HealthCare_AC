@@ -1,11 +1,11 @@
 // Navbar.js
 import React from 'react';
-import './Footer.css';
-import ytlogo from './ytlogo.png.png'; // Replace with your actual image path
-import iglogo from './instalogo1.png.png'; // Replace with your actual image path
-import fblogo from './fblogo1.png.png'; // Replace with your actual image path
-import twlogo from './twitter.png.png'; // Replace with your actual image path
-import logo from './Arogclogo.png';
+import './css/Footer.css';
+import ytlogo from './images/ytlogo.png.png'; // Replace with your actual image path
+import iglogo from './images/instalogo1.png.png'; // Replace with your actual image path
+import fblogo from './images/fblogo1.png.png'; // Replace with your actual image path
+import twlogo from './images/twitter.png.png'; // Replace with your actual image path
+import logo from './images/Arogclogo.png';
 
 const Footer = () => {
   return (

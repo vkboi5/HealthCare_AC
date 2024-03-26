@@ -168,8 +168,8 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
-import doct2 from './Rejs.png';
+import './css/Login.css';
+import doct2 from './images/Rejs.png';
 const Login = ({setUser}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
