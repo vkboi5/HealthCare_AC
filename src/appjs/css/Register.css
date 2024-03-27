@@ -1,7 +1,5 @@
 /* Global styles */
 body, html {
-  height: 100%;
-  margin: 0;
   font-family: 'Arial', sans-serif;
   background-color: #C8ECF2;
 }
@@ -85,9 +83,10 @@ h2 {
 
 .btns_of_the_form{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 .Reg_form_btn {
   background-color: #779ECB;
