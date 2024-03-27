@@ -168,9 +168,11 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast'; // Import toast from react-hot-toast
 import './css/Login.css';
 import doct2 from './images/Rejs.png';
-const Login = ({setUser}) => {
+
+const Login = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [userType, setUserType] = useState('patient');
@@ -188,16 +190,16 @@ const Login = ({setUser}) => {
 
       if (response.ok) {
         const data = await response.json();
-        alert(data.message);
-        setUser({ isAuthenticated: true, type: userType }); // Update user type
+        toast.success(data.message); // Display success toast
+        setUser({ isAuthenticated: true, type: userType });
         navigate(userType === 'doctor' ? '/doctormanagement' : '/patientappointments');
       } else {
         const errorData = await response.json();
-        alert(errorData.error);
+        toast.error(errorData.error); // Display error toast
       }
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Login failed. Please try again.');
+      toast.error('Login failed. Please try again.'); // Display error toast
     }
   };
 
@@ -243,7 +245,6 @@ const Login = ({setUser}) => {
         </form>
       </div>
       <div className="login-image">
-        {/* Make sure to replace 'path_to_your_image.jpg' with the actual path to your image */}
         <img src={doct2} alt="Healthcare Illustration" />
       </div>
     </div>

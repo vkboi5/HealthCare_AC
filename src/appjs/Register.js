@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QRCode from "qrcode.react";
+import { Toaster, toast } from 'react-hot-toast'; // Import ToastContainer and toast from react-hot-toast
 import "./css/Register.css";
 import doct1 from "./images/Rejs2.png";
 
@@ -44,8 +45,7 @@ const Register = () => {
       if (response.ok) {
         // Registration successful
         const data = await response.json();
-        alert(data.message);
-
+        toast.success(data.message); // Show success message using toast
         // If the user is a doctor, show the QR code
         if (userType === "doctor") {
           setShowQRCode(true);
@@ -53,11 +53,11 @@ const Register = () => {
       } else {
         // Registration failed, show an error message
         const errorData = await response.json();
-        alert(errorData.error);
+        toast.error(errorData.error); // Show error message using toast
       }
     } catch (error) {
       console.error("Error during registration:", error);
-      alert("Registration failed. Please try again.");
+      toast.error("Registration failed. Please try again."); // Show error message using toast
     }
   };
 
@@ -212,15 +212,14 @@ const Register = () => {
             </div>
           )}
         </form>
-        
+        <Toaster /> {/* Add ToastContainer at the root level */}
       </div>
-        <div className="register-image">
-          <img src={doct1} alt="fsa"></img>
-        </div>
+      <div className="register-image">
+        <img src={doct1} alt="fsa"></img>
+      </div>
     </div>
   );
 };
-
 export default Register;
 
 

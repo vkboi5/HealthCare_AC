@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './appjs/css/index.css';
 import App from './appjs/App';
+import { Toaster } from 'react-hot-toast';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Toaster /> 
     <App />
   </React.StrictMode>
 );
