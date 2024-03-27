@@ -56,6 +56,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                 <h1>Add Employee</h1>
                 <label htmlFor="firstName">First Name</label>
                 <input
+                    className="empinput"
                     id="firstName"
                     type="text"
                     ref={textInput}
@@ -65,6 +66,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                 />
                 <label htmlFor="lastName">Last Name</label>
                 <input
+                    className="empinput"
                     id="lastName"
                     type="text"
                     name="lastName"
@@ -73,6 +75,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                 />
                 <label htmlFor="email">Email</label>
                 <input
+                    className="empinput"
                     id="email"
                     type="email"
                     name="email"
@@ -81,6 +84,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                 />
                 <label htmlFor="salary">Salary ($)</label>
                 <input
+                    className="empinput"
                     id="salary"
                     type="number"
                     name="salary"
@@ -89,6 +93,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                 />
                 <label htmlFor="date">Date</label>
                 <input
+                    className="empinput"
                     id="date"
                     type="date"
                     name="date"
@@ -96,7 +101,7 @@ function Add({ employees, setEmployees, setIsAdding }) {
                     onChange={e => setDate(e.target.value)}
                 />
                 <div style={{ marginTop: '30px' }}>
-                    <input type="submit" value="Add" />
+                    <input className="empinput" type="submit" value="Add" />
                     <input
                         style={{ marginLeft: '12px' }}
                         className="muted-button"

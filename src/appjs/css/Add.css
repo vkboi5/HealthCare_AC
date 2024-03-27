@@ -18,10 +18,10 @@
     font-weight: bold;
   }
   
-  input[type='text'],
-  input[type='email'],
-  input[type='number'],
-  input[type='date'] {
+  .empinput[type='text'],
+  .empinput[type='email'],
+  .empinput[type='number'],
+  .empinput[type='date'] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -30,8 +30,8 @@
     font-size: 16px;
   }
   
-  input[type='submit'],
-  input[type='button'] {
+  .empinput[type='submit'],
+  .empinput[type='button'] {
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -40,8 +40,8 @@
     cursor: pointer;
   }
   
-  input[type='submit']:hover,
-  input[type='button']:hover {
+  .empinput[type='submit']:hover,
+  .empinput[type='button']:hover {
     opacity: 0.8;
   }
   
