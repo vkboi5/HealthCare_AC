@@ -1,7 +1,10 @@
 import React from 'react';
+// import 'antd/dist/antd.min.css'
 import ReactDOM from 'react-dom/client';
-import './appjs/css/index.css';
+import './index.css';
 import App from './appjs/App';
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import { Toaster } from 'react-hot-toast';
 import reportWebVitals from './reportWebVitals';
 
@@ -9,7 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Toaster /> 
-    <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
   </React.StrictMode>
 );
 

@@ -1,22 +1,37 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './css/App.css';
-import Login from './Login.js';
-import Register from './Register';
-import PatientAppointments from './PatientAppointments';
-import DoctorManagement from './DoctorManagement';
 import Navbar from './Navbar.js';
+import { StatusProvider } from './StatusContext';
+import { useSelector } from "react-redux";
+import ProtectedRoute from "../components/ProtectedRoute"; 
+import PublicRoute from "../components/PublicRoute";
+import { Toaster } from "react-hot-toast";
+
+// Import components from the first file
+import Login from './Logins.js';
+import Register from './Register.js';
+import Home from './Home';
+import ApplyDoctor from './ApplyDoctor';
+import Notifications from './Notifications';
+import Userslist from '../Admin/Userslist';
+import DoctorsList from '../Admin/DoctorsList';
+import Profile from '../Doctor/Profile';
+import BookAppointment from './BookAppointment';
+import Appointments from './Appointments';
+import DoctorAppointments from '../Doctor/DoctorAppointments';
+
+// Import components from the second file
+// import PatientAppointments from './PatientAppointments';
+import DoctorManagement from './DoctorManagement';
 import Homepage from './Homepage.js';
 import About from './About.js';
-import { StatusProvider } from './StatusContext';
 import Dashboard from './EmployeeManagement.js';
 import Ecom from './Ecom.js';
 import QRscan from './qr.js';
 
-
-
 function App() {
-  const [user, setUser] = useState({ isAuthenticated: false, type: null });
+  const { loading } = useSelector((state) => state.alerts);
 
   const mainContentStyle = {
     marginTop: "65px",
@@ -26,24 +41,36 @@ function App() {
     <StatusProvider>
       <Router>
         <Navbar />
+        {loading && (
+          <div className="spinner-parent">
+            <div className="spinner-border" role="status"></div>
+          </div>
+        )}
+        <Toaster position="top-center" reverseOrder={false} />
         <div className="App" style={mainContentStyle}>
           <Routes>
-            <Route path="/login" element={<Login setUser={setUser}/>} />
-            <Route path="/register" element={<Register setUser={setUser} />} />
-            {/* <Route path="/doctormanagement" element={<DocElement user={user}><DoctorManagement /></DocElement>} /> */}
-            {/* <Route path="/patientappointments" element={<PatElement user={user}><PatientAppointments /></PatElement>} /> */}
-            <Route path="/patientappointments" element={<PatientAppointments />} />
+            {/* Routes from the first file */}
+            <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+            <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+            <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+            <Route path="/apply-doctor" element={<ProtectedRoute><ApplyDoctor /></ProtectedRoute>} />
+            <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />
+            <Route path="/admin/userslist" element={<ProtectedRoute><Userslist /></ProtectedRoute>} />
+            <Route path="/admin/doctorslist" element={<ProtectedRoute><DoctorsList /></ProtectedRoute>} />
+            <Route path="/profile/" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            <Route path="/book-appointment/:doctorId" element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
+            <Route path="/patientappointments" element={<ProtectedRoute><BookAppointment /></ProtectedRoute>} />
+            <Route path="/appointments" element={<ProtectedRoute><Appointments /></ProtectedRoute>} />
+            <Route path="/doctor/appointments" element={<ProtectedRoute><DoctorAppointments /></ProtectedRoute>} />
+            
+            {/* Routes from the second file */}
+            {/* <Route path="/patientappointments" element={<PatientAppointments />} /> */}
             <Route path="/doctormanagement" element={<DoctorManagement />} />
             <Route path="/homepage" element={<Homepage />} />
             <Route path="/about" element={<About />} />
             <Route path="/employemanagement" element={<Dashboard />} />
             <Route path="/ecommerce" element={<Ecom />} />
             <Route path="/qr" element={<QRscan />} />
-            {user.isAuthenticated ? (
-                <Route path="/*" element={<Navigate to={user.type === 'doctor' ? "/doctormanagement" : "/patientappointments"} />} />
-              ) : (
-                <Route path="/*" element={<Navigate to="/homepage" />} />
-              )}
           </Routes>
         </div>
       </Router>
@@ -51,28 +78,7 @@ function App() {
   );
 }
 
-// function PatElement({ children, user }) {
-//   if (user && user.type === 'patient') {
-//     return <>{children}</>;
-//   } else {
-//     return (
-//       <div className="deniedMessageContainer"> {/* Container div */}
-//         <div className="deniedMessage">Access Denied: You are not a Patient</div>
-//       </div>
-//     );
-//   }
-// }
-
-// function DocElement({ children, user }) {
-//   if (user && user.type === 'doctor') {
-//     return <>{children}</>;
-//   } else {
-//     return (
-//       <div className="deniedMessageContainer"> {/* Container div */}
-//         <div className="deniedMessage">Access Denied: You are not a Doctor</div>
-//       </div>
-//     );
-//   }
-// }
-
 export default App;
+
+
+

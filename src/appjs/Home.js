@@ -1,49 +1,44 @@
-import {Grid, Button, Typography} from '@material-ui/core';
-import Icon from '@mdi/react'
-import { mdiQrcode, mdiQrcodeScan } from '@mdi/js';
-import { Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Layout from "../components/Layout";
+import { Col, Row } from "antd";
+import Doctor from "../components/Doctor";
+import { useDispatch, useSelector } from "react-redux";
+import { showLoading, hideLoading } from "../redux/alertsSlice";
 function Home() {
+  const [doctors, setDoctors] = useState([]);
+  const dispatch = useDispatch();
+  const getData = async () => {
+    try {
+      dispatch(showLoading())
+      const response = await axios.get("/api/user/get-all-approved-doctors", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      dispatch(hideLoading())
+      if (response.data.success) {
+        setDoctors(response.data.data);
+      }
+    } catch (error) {
+      dispatch(hideLoading())
+    }
+  };
 
-    return (
-        <div>
+  useEffect(() => {
+    getData();
+  }, []);
+  return (
+    <Layout>
+      <Row gutter={20}>
+        {doctors.map((doctor) => (
+          <Col span={8} xs={24} sm={24} lg={8}>
+            <Doctor doctor={doctor} />
+          </Col>
+        ))}
+      </Row>
+    </Layout>
+  );
+}
 
-            <Typography style={{margin:30}} variant="h2">
-            React QR Code
-            </Typography>
-
-            <Grid container spacing={6}>
-                <Grid item xs={6}>
-                    <Link to="/qr_generator">
-                    <Button variant="contained" size="large" color="primary">
-                        <Icon 
-                        style={{padding:10}}
-                        path={mdiQrcode}
-                        title="QR Generator"
-                        size={10}
-                        color="white"
-                        />
-                    </Button>
-                    </Link>
-                </Grid>
-                <Grid item xs={6}>
-                    <Link to="/qr_scanner">
-                    <Button variant="contained" size="large" color="primary">
-                        <Icon 
-                        style={{padding:10}}
-                        path={mdiQrcodeScan}
-                        title="QR Scanner"
-                        size={10}
-                        color="white"
-                        />
-                    </Button>
-                    </Link>
-                </Grid>
-            </Grid>
-        
-        </div>
-    );
-  }
-  
-  export default Home;
-  
+export default Home;
